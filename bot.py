@@ -1,3 +1,4 @@
+from config import TOKEN
 print(f"Токен: {TOKEN!r}")
 print(f"Тип токена: {type(TOKEN)}")
 print(f"Длина токена: {len(TOKEN)}")
@@ -5,7 +6,7 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
-from config import TOKEN
+
 
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
