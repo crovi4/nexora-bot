@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 import os
+import asyncio
+from config import TOKEN
 
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -13,13 +15,15 @@ async def on_ready():
 async def load_cogs():
     for file in os.listdir("./cogs"):
         if file.endswith(".py"):
-            await bot.load_extension(f"cogs.{file[:-3]}")
+            try:
+                await bot.load_extension(f"cogs.{file[:-3]}")
+                print(f"Загружен модуль: {file}")
+            except Exception as e:
+                print(f"Ошибка загрузки {file}: {e}")
 
 async def main():
     async with bot:
         await load_cogs()
-        from config import TOKEN
         await bot.start(TOKEN)
 
-import asyncio
 asyncio.run(main())
