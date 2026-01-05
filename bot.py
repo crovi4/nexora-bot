@@ -1,3 +1,6 @@
+print(f"Токен: {TOKEN!r}")
+print(f"Тип токена: {type(TOKEN)}")
+print(f"Длина токена: {len(TOKEN)}")
 import discord
 from discord.ext import commands
 import os
